@@ -2,6 +2,11 @@ import React from "react";
 
 class AddFishForm extends React.Component {
   render() {
+    createFish = (event) => {
+      // 1. Stop the form from submitting
+      event.preventDefault();
+      console.log("Making a fish");
+    }
     return (
       <form className="fish-edit" onSubmit={this.createFish}>
         <input name="name" type="text" placeholder="Name" />
