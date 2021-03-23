@@ -76,6 +76,15 @@ class App extends React.Component {
     this.setState({ order });
   };
 
+  removeFromOrder = (key) => {
+    // 1. Take a copu of state
+    const order = {...this.state.order};
+    // 2. Remove the item from state
+    delete order[key];
+    // 3. Call setState to update our Object
+    this.setState({ order });
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -90,10 +99,15 @@ class App extends React.Component {
               addToOrder={this.addToOrder} />)}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
+        <Order
+          fishes={this.state.fishes} 
+          order={this.state.order}
+          removeFromOrder={this.removeFromOrder}
+        />
         <Inventory
         addFish={this.addFish}
         updateFish={this.updateFish}
+        deleteFish={this.deleteFish}
         loadSampleFishes={this.loadSampleFishes}
         fishes={this.state.fishes}
         />
